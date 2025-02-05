@@ -5,6 +5,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
+import AddSkill from "../pages/AddSkill";
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: "/contact-me",
                 element: <Contact />
+            },
+            {
+                path: "/add-skill",
+                element: <AddSkill />
             }
         ]
     },

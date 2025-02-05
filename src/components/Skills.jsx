@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import SectionTitle from './SectionTitle';
+import { Link } from 'react-router-dom';
 
 const Skills = () => {
     return (
@@ -64,6 +65,9 @@ const Skills = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='text-center pb-10'>
+                    <Link to="/add-skill"><button className='text-blue-300 underline hover:cursor-pointer hover:text-red-500'>Add Skill</button></Link>
                 </div>
             </div>
         </div>

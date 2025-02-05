@@ -1,11 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import Hero from '../components/Hero';
+import Skills from '../components/Skills';
 
 const Home = () => {
     return (
         <div>
-            <Hero />
+            <div>
+                <Hero />
+            </div>
+            <div>
+                <Skills />
+            </div>
         </div>
     );
 };

@@ -6,7 +6,7 @@ const Hero = () => {
 
     return (
         <div className='flex flex-col md:flex-row gap-2 justify-center items-center bg-[#252734] min-h-[calc(100vh-133px)]'>
-            <div className='p-5 text-center text-white space-y-2'>
+            <div className='p-5 text-center text-white space-y-2 mt-20 md:mt-0'>
                 <p className='text-gray-600'>Assalamu Alaikum this is...</p>
                 <h1 className='text-2xl md:text-5xl'> <span className='font-semibold'>SHOEB AKTER DRISSO</span></h1>
                 <p className='text-gray-500'>A MERN Stact Developer from Rangpur, Bangladesh</p>

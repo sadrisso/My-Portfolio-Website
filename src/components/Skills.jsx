@@ -2,13 +2,45 @@
 import React from 'react';
 import SectionTitle from './SectionTitle';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import useAxios from '../hooks/useAxios';
 
 const Skills = () => {
+
+    const axiosInstance = useAxios()
+
+    const { data } = useQuery({
+        queryKey: ['skills'],
+        queryFn: async () => {
+            const res = await axiosInstance.get("skills")
+            return res?.data
+        }
+    })
+
+    console.log(data)
+
     return (
         <div>
             <div className='bg-[#2A2C39]'>
                 <SectionTitle heading="skills" subHeading="the technologies I know" />
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 container mx-auto py-10 px-5'>
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 container mx-auto'>
+                    {
+                        data?.map((item, i) =>
+                            <div key={i} className="card bg-[#252734] text-white shadow-sm mx-auto">
+                                <figure className="px-10 pt-10 w-[200px] h-[170px] text-center mx-auto">
+                                    <img className='' src={item?.image} alt="" />
+                                </figure>
+                                <div className="card-body items-center text-center">
+                                    <h2 className="card-title">{item?.title}</h2>
+                                    <p className='text-gray-500'>{item?.description}</p>
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary">Details</button>
+                                    </div>
+                                </div>
+                            </div>)
+                    }
+                </div>
+                {/* <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 container mx-auto py-10 px-5'>
                     <div className="card bg-[#252734] text-white shadow-sm mx-auto">
                         <figure className="px-10 pt-10">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
@@ -65,7 +97,7 @@ const Skills = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className='text-center pb-10'>
                     <Link to="/add-skill"><button className='text-blue-300 underline hover:cursor-pointer hover:text-red-500'>Add Skill</button></Link>
                 </div>

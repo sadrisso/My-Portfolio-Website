@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import SectionTitle from './SectionTitle';
 import useAxios from '../hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
 
@@ -36,9 +37,9 @@ const Projects = () => {
                             </figure>
                             <div className="card-body">
                                 <h2 className="card-title text-3xl">{item?.projectName}</h2>
-                                <p>Click the button to listen on Spotiwhy app.</p>
+                                <p className='text-gray-500'>Please click the details button to view project details...</p>
                                 <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">Details</button>
+                                    <Link to={`/project/${item?._id}`}><button className="btn btn-neutral">Details</button></Link>
                                 </div>
                             </div>
                         </div>)

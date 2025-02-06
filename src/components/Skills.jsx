@@ -26,18 +26,18 @@ const Skills = () => {
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 container mx-auto'>
                     {
                         data?.map((item, i) =>
-                            <div key={i} className="card bg-[#252734] text-white shadow-sm mx-auto">
-                                <figure className="px-10 pt-10 w-[200px] h-[170px] text-center mx-auto">
-                                    <img className='' src={item?.image} alt="" />
-                                </figure>
-                                <div className="card-body items-center text-center">
-                                    <h2 className="card-title">{item?.title}</h2>
-                                    <p className='text-gray-500'>{item?.description}</p>
-                                    <div className="card-actions">
-                                        <button className="btn btn-primary">Details</button>
+                            <Link key={i} to={`/skill/${item?._id}`}>
+                                <div className="card bg-[#252734] text-white shadow-sm mx-auto">
+                                    <figure className="px-10 pt-10 w-[200px] h-[170px] text-center mx-auto">
+                                        <img className='' src={item?.image} alt="" />
+                                    </figure>
+                                    <div className="card-body items-center text-center">
+                                        <h2 className="card-title">{item?.title}</h2>
+                                        <p className='text-gray-500'>{item?.description}</p>
                                     </div>
                                 </div>
-                            </div>)
+                            </Link>
+                        )
                     }
                 </div>
                 {/* <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 container mx-auto py-10 px-5'>

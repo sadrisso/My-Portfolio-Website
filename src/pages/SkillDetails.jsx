@@ -13,7 +13,7 @@ const SkillDetails = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/skill/${id}`)
+        axios.get(`https://my-portfolio-server-sigma.vercel.app/skill/${id}`)
             .then(res => {
                 setData(res?.data)
                 setLoading(false)

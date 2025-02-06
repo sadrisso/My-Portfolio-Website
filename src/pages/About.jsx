@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
+import { Helmet } from 'react-helmet';
+
 
 const About = () => {
     return (

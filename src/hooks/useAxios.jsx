@@ -4,7 +4,7 @@ import React from 'react';
 
 const useAxios = () => {
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:5000/',
+        baseURL: 'https://my-portfolio-server-sigma.vercel.app/',
     });
 
     return axiosInstance;

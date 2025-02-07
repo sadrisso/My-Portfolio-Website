@@ -51,8 +51,8 @@ const ProjectDetails = () => {
                                     }
                                 </div>
                                 <div className='my-4 md:mt-10'>
-                                    <p><span className='font-semibold'>Live Link:</span> <a className='hover:text-orange-600' href={liveLink}>{liveLink}</a></p>
-                                    <p><span className='font-semibold'>Github Link:</span> <a className='hover:text-orange-600' href={githubLink}>{githubLink}</a></p>
+                                    <p><span className='font-semibold'>Live Link:</span> <a target='_blank' className='hover:text-orange-600' href={liveLink}>{liveLink}</a></p>
+                                    <p><span className='font-semibold'>Github Link:</span> <a target='_blank' className='hover:text-orange-600' href={githubLink}>{githubLink}</a></p>
                                 </div>
                             </div>
                             <hr />

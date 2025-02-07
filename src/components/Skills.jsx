@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -8,11 +8,13 @@ import useAxios from '../hooks/useAxios';
 const Skills = () => {
 
     const axiosInstance = useAxios()
+    const [loading, setLoading] = useState(true)
 
     const { data } = useQuery({
         queryKey: ['skills'],
         queryFn: async () => {
             const res = await axiosInstance.get("skills")
+            setLoading(false)
             return res?.data
         }
     })
@@ -22,24 +24,37 @@ const Skills = () => {
     return (
         <div>
             <div className='bg-[#2A2C39]'>
-                <SectionTitle heading="skills" subHeading="the technologies I know" />
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 container mx-auto'>
-                    {
-                        data?.map((item, i) =>
-                            <Link key={i} to={`/skill/${item?._id}`}>
-                                <div className="card bg-[#252734] text-white shadow-sm mx-auto">
-                                    <figure className="px-10 pt-10 w-[200px] h-[170px] text-center mx-auto">
-                                        <img className='' src={item?.image} alt="" />
-                                    </figure>
-                                    <div className="card-body items-center text-center">
-                                        <h2 className="card-title">{item?.title}</h2>
-                                        <p className='text-gray-500'>{item?.description}</p>
-                                    </div>
-                                </div>
-                            </Link>
-                        )
-                    }
-                </div>
+                {
+                    loading ?
+                        <div className='text-white text-center text-xl py-5'>
+                            <p>Please Wait <br />Skills Data Coming Soon</p>
+                            <span className="loading loading-spinner loading-lg"></span>
+                        </div>
+                        :
+                        <div>
+                            <SectionTitle heading="skills" subHeading="the technologies I know" />
+                            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 container mx-auto'>
+                                {
+                                    data?.map((item, i) =>
+                                        <Link key={i} to={`/skill/${item?._id}`}>
+                                            <div className="card bg-[#252734] text-white shadow-sm mx-auto">
+                                                <figure className="px-10 pt-10 w-[200px] h-[170px] text-center mx-auto">
+                                                    <img className='' src={item?.image} alt="" />
+                                                </figure>
+                                                <div className="card-body items-center text-center">
+                                                    <h2 className="card-title">{item?.title}</h2>
+                                                    <p className='text-gray-500'>{item?.description}</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                }
+                            </div>
+                            <div className='text-center pb-10'>
+                                <Link to="/add-skill"><button className='text-blue-300 underline hover:cursor-pointer hover:text-red-500'>Add Skill</button></Link>
+                            </div>
+                        </div>
+                }
                 {/* <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 container mx-auto py-10 px-5'>
                     <div className="card bg-[#252734] text-white shadow-sm mx-auto">
                         <figure className="px-10 pt-10">
@@ -98,9 +113,6 @@ const Skills = () => {
                         </div>
                     </div>
                 </div> */}
-                <div className='text-center pb-10'>
-                    <Link to="/add-skill"><button className='text-blue-300 underline hover:cursor-pointer hover:text-red-500'>Add Skill</button></Link>
-                </div>
             </div>
         </div>
     );
